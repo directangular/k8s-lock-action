@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 MAX_ATTEMPTS=${INPUT_MAX_ATTEMPTS:-10000}
 
 source util.sh
@@ -12,8 +14,8 @@ echo "    kubectl create secret generic $LOCKNAME --from-literal=next_build=$GIT
 
 lock_attempt=1
 while :; do
-    secret_json=$(kubectl get secret $LOCKNAME -o json)
-    [[ $? -eq 0 ]] || {
+    secret_json=$(kubectl get secret $LOCKNAME -o json || echo "nope")
+    [[ "$secret_json" = "nope" ]] || {
         echo "Creating and grabbing initial secret lock"
         kubectl create secret generic $LOCKNAME --from-literal=next_build=${GITHUB_RUN_NUMBER}
         exit 0
