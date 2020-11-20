@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 source util.sh
 env_check
 LOCKNAME=$(get_lock_name)
