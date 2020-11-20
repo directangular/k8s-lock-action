@@ -80,7 +80,8 @@ secret manually:
 
     kubectl create secret generic <secret_name> --from-literal=next_build=<next_build> --dry-run -o yaml | kubectl replace -f -
 
-(The exact command is actually printed out when the action blocks.)
+(The exact command is actually printed out at the beginning of the lock
+process.)
 
 ## Supported k8s environments
 
