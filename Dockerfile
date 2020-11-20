@@ -15,5 +15,4 @@ RUN if ! curl -fL -o /usr/local/bin/kubectl https://amazon-eks.s3.us-west-2.amaz
 COPY main.sh /main.sh
 COPY post.sh /post.sh
 COPY util.sh /util.sh
-WORKDIR /
 ENTRYPOINT ["/main.sh"]

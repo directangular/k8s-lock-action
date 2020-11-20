@@ -4,7 +4,7 @@ set -e
 
 MAX_ATTEMPTS=${INPUT_MAX_ATTEMPTS:-10000}
 
-source util.sh
+source /util.sh
 env_check
 LOCKNAME=$(get_lock_name)
 
