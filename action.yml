@@ -1,0 +1,24 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+name: 'k8s lock'
+description: 'Protect steps in your workflow from concurrent execution using a kubernetes secret to implement a distributed lock'
+author: 'mgalgs'
+branding:
+  icon: 'anchor'
+  color: 'blue'
+
+inputs:
+  kube-config-data:
+    description: 'base64 encoded kubeconfig (generally from a secret)'
+    required: true
+  lock-name:
+    description: "Lock name (should be unique across all actions in this repo)."
+    required: true
+  max-attempts:
+    description: "How many times locking will be attempted before bailing out."
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: 'main.sh'
+  post-entrypoint: 'post.sh'
