@@ -20,5 +20,5 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  entrypoint: 'main.sh'
-  post-entrypoint: 'post.sh'
+  entrypoint: '/main.sh'
+  post-entrypoint: '/post.sh'
