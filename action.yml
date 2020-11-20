@@ -7,13 +7,13 @@ branding:
   color: 'blue'
 
 inputs:
-  kube-config-data:
+  kube_config_data:
     description: 'base64 encoded kubeconfig (generally from a secret)'
     required: true
-  lock-name:
+  lock_name:
     description: "Lock name (should be unique across all actions in this repo)."
     required: true
-  max-attempts:
+  max_attempts:
     description: "How many times locking will be attempted before bailing out."
     required: false
 

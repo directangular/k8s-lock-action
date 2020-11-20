@@ -24,8 +24,8 @@ jobs:
     - name: Lock workflow
       uses: directangular/k8s-lock-action@v1
       with:
-        kube-config-data: ${{ secrets.KUBE_CONFIG_DATA }}
-        lock-name: "my-deploy-lock"
+        kube_config_data: ${{ secrets.KUBE_CONFIG_DATA }}
+        lock_name: "my-deploy-lock"
     - name: Deploy
       uses: ./actions/deployer/
 ```
@@ -50,15 +50,15 @@ authentication from `aws-actions/configure-aws-credentials` or similar.
 
 # Inputs
 
-## `kube-config-data`
+## `kube_config_data`
 
 Required. Use `base64 < ~/.kube/config` (or similar) to generate.
 
-## `lock-name`
+## `lock_name`
 
 Required. Must be unique across the repository where this action is used.
 
-## `max-attempts`
+## `max_attempts`
 
 Optional. How many times we try to grab the lock before bailing. Defaults
 to 10000.
@@ -75,7 +75,7 @@ incremented, allowing the next build to execute.
 ## Stuck locks
 
 If the secret gets messed up somehow the task will block until it hits
-`max-attempts`, and then will fail. You can unblock it by overwriting the
+`max_attempts`, and then will fail. You can unblock it by overwriting the
 secret manually:
 
     kubectl create secret generic <secret_name> --from-literal=next_build=<next_build> --dry-run -o yaml | kubectl replace -f -
