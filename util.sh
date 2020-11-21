@@ -1,6 +1,8 @@
+# Can exit. Invoke directly, not from a subshell.
 function init_k8s() {
-    base64 -d <<<"$KUBE_CONFIG_DATA" > kubeconfig
-    export KUBECONFIG=kubeconfig
+    base64 -d <<<"$KUBE_CONFIG_DATA" > /tmp/kubeconfig
+    export KUBECONFIG=/tmp/kubeconfig
+    kubectl version || { echo "Couldn't get a working kubectl"; exit 1; }
 }
 
 function get_lock_name() {
