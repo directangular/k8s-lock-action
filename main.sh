@@ -7,6 +7,7 @@ MAX_ATTEMPTS=${INPUT_MAX_ATTEMPTS:-10000}
 source /util.sh
 env_check
 init_k8s
+echo "Using KUBECONFIG=${KUBECONFIG}"
 LOCKNAME=$(get_lock_name)
 
 echo "Attempting lock via ${LOCKNAME}."
