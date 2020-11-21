@@ -58,6 +58,11 @@ Required. Use `base64 < ~/.kube/config` (or similar) to generate.
 
 Required. Must be unique across the repository where this action is used.
 
+## `kube_context`
+
+Optional. The context from the provided `kubeconfig` that should be
+used. This string is simply passed to `kubectl use-context`.
+
 ## `max_attempts`
 
 Optional. How many times we try to grab the lock before bailing. Defaults

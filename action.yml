@@ -10,6 +10,9 @@ inputs:
   kube_config_data:
     description: 'base64 encoded kubeconfig (generally from a secret)'
     required: true
+  kube_context:
+    description: 'The context from the provided kubeconfig that should be used (will be passed to kubectl use-context)'
+    required: false
   lock_name:
     description: "Lock name (should be unique across all actions in this repo)."
     required: true
