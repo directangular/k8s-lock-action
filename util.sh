@@ -2,7 +2,7 @@
 function init_k8s() {
     base64 -d <<<"$KUBE_CONFIG_DATA" > /tmp/kubeconfig
     export KUBECONFIG=/tmp/kubeconfig
-    [[ -n "$INPUT_KUBE_CONTEXT" ]] && kubectl use-context $INPUT_KUBE_CONTEXT
+    [[ -n "$INPUT_KUBE_CONTEXT" ]] && kubectl config use-context $INPUT_KUBE_CONTEXT
     kubectl version || { echo "Couldn't get a working kubectl"; exit 1; }
 }
 
