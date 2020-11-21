@@ -1,3 +1,8 @@
+function init_k8s() {
+    base64 -d <<<"$KUBE_CONFIG_DATA" > kubeconfig
+    export KUBECONFIG=kubeconfig
+}
+
 function get_lock_name() {
     echo "k8s-lock-${GITHUB_REPOSITORY/\//-}-${INPUT_LOCK_NAME}"
 }

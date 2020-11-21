@@ -4,6 +4,7 @@ set -e
 
 source /util.sh
 env_check
+init_k8s
 LOCKNAME=$(get_lock_name)
 
 next_build=$GITHUB_RUN_NUMBER
