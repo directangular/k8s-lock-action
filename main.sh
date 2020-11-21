@@ -24,4 +24,5 @@ while :; do
     [[ $next_build -eq $GITHUB_RUN_NUMBER ]] && { echo "Lock acquired."; exit 0; }
     echo "Couldn't get lock ($next_build "'!'"= $GITHUB_RUN_NUMBER). Attempt $lock_attempt / ${MAX_ATTEMPTS}. Sleeping..."
     sleep 10
+    ((lock_attempt++))
 done
