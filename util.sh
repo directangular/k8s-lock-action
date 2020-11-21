@@ -1,5 +1,5 @@
 function get_lock_name() {
-    lockname="k8s-lock-${GITHUB_RESPOSITORY/\//-}-${INPUT_LOCK_NAME}"
+    echo "k8s-lock-${GITHUB_RESPOSITORY/\//-}-${INPUT_LOCK_NAME}"
 }
 
 # Can exit. Invoke directly, not from a subshell.
