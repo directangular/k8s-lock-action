@@ -35,9 +35,12 @@ proper operation of your `kubeconfig`. For example, with EKS you would need
 to configure your AWS credentials prior to `k8s-lock-action` since your
 `kubeconfig` likely uses the `aws eks` command to authenticate. The image
 this action runs with includes the `awscli` package, which will pick up
-authentication from `aws-actions/configure-aws-credentials` or similar.
+authentication from `aws-actions/configure-aws-credentials` or
+similar. Here's the above example with AWS credential configuration added:
 
 ```yaml
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -45,7 +48,12 @@ authentication from `aws-actions/configure-aws-credentials` or similar.
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
     - name: Lock workflow
-      ...
+      uses: directangular/k8s-lock-action@v1
+      with:
+        kube_config_data: ${{ secrets.KUBE_CONFIG_DATA }}
+        lock_name: "my-deploy-lock"
+    - name: Deploy
+      uses: ./actions/deployer/
 ```
 
 # Inputs
@@ -56,7 +64,8 @@ Required. Use `base64 < ~/.kube/config` (or similar) to generate.
 
 ## `lock_name`
 
-Required. Must be unique across the repository where this action is used.
+Required. Must be unique across the repository where this action is used
+(otherwise unrelated actions might block each other).
 
 ## `kube_context`
 
@@ -85,8 +94,8 @@ secret manually:
 
     kubectl create secret generic <secret_name> --from-literal=next_build=<next_build> --dry-run -o yaml | kubectl replace -f -
 
-(The exact command is actually printed out at the beginning of the lock
-process.)
+(The exact command is also displayed at the beginning of the lock process
+for easy reference.)
 
 ## Supported k8s environments
 
