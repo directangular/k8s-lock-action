@@ -34,7 +34,7 @@ Note that you'll need to make any necessary workspace preparations for
 proper operation of your `kubeconfig`. For example, with EKS you would need
 to configure your AWS credentials prior to `k8s-lock-action` since your
 `kubeconfig` likely uses the `aws eks` command to authenticate. The image
-this action runs with includes the `awscli` package, which will pick up
+this action runs with includes the `aws-cli-v2` package, which will pick up
 authentication from `aws-actions/configure-aws-credentials` or
 similar. Here's the above example with AWS credential configuration added:
 

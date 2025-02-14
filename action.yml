@@ -8,7 +8,7 @@ branding:
 
 inputs:
   kube_config_data:
-    description: 'base64 encoded kubeconfig (generally from a secret)'
+    description: 'base64 encoded kubeconfig (generally from a secret). The "aws" command is available (aws-cli-v2)'
     required: true
   kube_context:
     description: 'The context from the provided kubeconfig that should be used (will be passed to kubectl use-context)'
