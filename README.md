@@ -111,3 +111,13 @@ the lock value increases monotonically with each build.
 The bottom line is that you should avoid re-running your builds. If you
 really want to re-run a build you'll just need to intervene as per the
 "Stuck locks" section above.
+
+## Releases
+
+### v2
+
+- kubectl 1.32
+
+### v1
+
+- kubectl 1.17

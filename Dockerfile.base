@@ -1,13 +1,20 @@
-FROM alpine:3.12
+FROM debian:12.9-slim
 
-RUN apk add \
-        bash \
+RUN apt-get update && apt-get install -y \
         curl \
         jq \
-        py-pip \
-        && rm -rf /var/cache/apk/*
-RUN pip install --no-cache-dir awscli
-RUN if ! curl -fL -o /usr/local/bin/kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.12/2020-11-02/bin/linux/amd64/kubectl; then \
+        unzip \
+        groff-base \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install AWS CLI v2
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm -rf aws awscliv2.zip
+
+# Install kubectl
+RUN if ! curl -fL -o /usr/local/bin/kubectl https://dl.k8s.io/release/v1.32.1/bin/linux/amd64/kubectl; then \
         echo >&2 "error: failed to download kubectl binary"; \
         exit 1; \
     fi; \
