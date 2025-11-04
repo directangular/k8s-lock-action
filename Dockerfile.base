@@ -14,7 +14,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     rm -rf aws awscliv2.zip
 
 # Install kubectl
-RUN if ! curl -fL -o /usr/local/bin/kubectl https://dl.k8s.io/release/v1.32.1/bin/linux/amd64/kubectl; then \
+RUN if ! curl -fL -o /usr/local/bin/kubectl https://dl.k8s.io/release/v1.34.1/bin/linux/amd64/kubectl; then \
         echo >&2 "error: failed to download kubectl binary"; \
         exit 1; \
     fi; \
