@@ -12,7 +12,7 @@ LOCKNAME=$(get_lock_name)
 
 echo "Attempting lock via ${LOCKNAME}."
 echo "If you need to override this lock to allow this build to continue, execute:"
-echo "    kubectl create secret generic $LOCKNAME --from-literal=next_build=$GITHUB_RUN_NUMBER --dry-run -o yaml | kubectl replace -f -"
+echo "    kubectl create secret generic $LOCKNAME --from-literal=next_build=$GITHUB_RUN_NUMBER --dry-run=client -o yaml | kubectl replace -f -"
 
 lock_attempt=1
 while :; do
