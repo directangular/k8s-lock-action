@@ -48,7 +48,7 @@ similar. Here's the above example with AWS credential configuration added:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-2
     - name: Lock workflow
-      uses: directangular/k8s-lock-action@v1
+      uses: directangular/k8s-lock-action@v3
       with:
         kube_config_data: ${{ secrets.KUBE_CONFIG_DATA }}
         lock_name: "my-deploy-lock"
