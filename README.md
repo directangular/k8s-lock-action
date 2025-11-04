@@ -17,7 +17,7 @@ on:
 name: Deployer
 jobs:
   deploy-plz:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout
       uses: actions/checkout@v2
