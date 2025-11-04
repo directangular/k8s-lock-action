@@ -114,6 +114,12 @@ really want to re-run a build you'll just need to intervene as per the
 
 ## Releases
 
+### v3
+
+- kubectl 1.34
+- Don't release lock when not owned by this build (e.g. in case of lock failure due
+  to job cancellation)
+
 ### v2
 
 - kubectl 1.32
